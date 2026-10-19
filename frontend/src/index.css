@@ -1,0 +1,81 @@
+/* File: src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+@keyframes sweep {
+  0% { top: -8%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { top: 104%; opacity: 0; }
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2A3142;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .dashboard-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  ZSAD Inspector landing page utilities
+ * ------------------------------------------------------------------ */
+@layer utilities {
+  .bg-grid-lg {
+    background-image:
+      linear-gradient(oklch(0.32 0.02 45 / 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.32 0.02 45 / 0.16) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .bg-grid-sm {
+    background-image:
+      linear-gradient(oklch(0.32 0.02 45 / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.32 0.02 45 / 0.5) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  .clip-corner {
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .clip-corner-sm {
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+}
